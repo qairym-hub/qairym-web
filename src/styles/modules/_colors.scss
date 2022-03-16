@@ -1,0 +1,25 @@
+$primary: #339DFF;
+$success: #59EC48;
+$danger: #ED254E;
+$warning: #F9DC5C;
+$secondary: #aeaeae;
+
+.bg-primary {
+    background-color: $primary;
+}
+
+.bg-success {
+    background-color: $success;
+}
+
+.bg-danger {
+    background-color: $danger;
+}
+
+.bg-warning {
+    background-color: $warning;
+}
+
+.bg-secondary {
+    background-color: $secondary;
+}
