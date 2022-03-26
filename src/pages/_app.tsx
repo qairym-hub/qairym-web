@@ -7,6 +7,7 @@ import store from '../services/store/store'
 import DefaultButton from '../components/buttons/DefaultButton'
 
 import '../../scss/globals.scss'
+import RedirectButton from '../components/buttons/RedirectButton'
 
 const App = () => {
   return (
@@ -16,6 +17,10 @@ const App = () => {
         icon={
           <Icon.ArrowRightCircleFill size="20" />
         }
+      />
+      <RedirectButton
+        text="Redirect to /home button"
+        to="/home"
       />
     </Provider>
   )

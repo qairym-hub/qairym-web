@@ -3,18 +3,20 @@ import { Button } from 'react-bootstrap'
 
 interface ButtonComponentProps {
   text: string,
+  color?: string,
   icon?: React.ReactNode,
   loading?: boolean,
-  callback?: any
+  onClick?: any
 }
 
-const DefaultButton = ({ text, icon, loading, callback }: ButtonComponentProps) => {
+const DefaultButton = ({ text, color = 'primary', icon, loading, onClick }: ButtonComponentProps) => {
 
   return (
     <>
       <Button
         className="d-flex align-items-center border rounded-extra"
-        onClick={callback}
+        variant={color}
+        onClick={onClick}
         disabled={loading}
       >
         <span className="d-flex px-5">
