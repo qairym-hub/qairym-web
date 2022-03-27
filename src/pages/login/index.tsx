@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
-import { GoogleButton, Header, Login } from './components'
+import { GoogleButton, Header, Login, Poster } from './components'
 
 const LoginPage: React.FunctionComponent = () => {
 
@@ -10,16 +10,16 @@ const LoginPage: React.FunctionComponent = () => {
       <Container fluid>
         <Row>
           <Col xs lg>
-            <div className="w-100 h-100 pt-3 pb-3 px-1">
+            <section className="w-100 h-100 pt-3 pb-3 px-1">
               <div className="bg-primary w-100 h-100 rounded-extra">
-
+                <Poster />
               </div>
-            </div>
+            </section>
           </Col>
           <Col xs lg>
-            <div
-              style={{ width: '100%', height: '710px' }}
-              className="d-flex align-items-center justify-content-center"
+            <section
+              style={{ height: '710px' }}
+              className="d-flex align-items-center justify-content-center w-100"
             >
               <div>
                 <div className="mb-5">
@@ -28,7 +28,7 @@ const LoginPage: React.FunctionComponent = () => {
                 <div className="d-flex justify-content-center">
                   <GoogleButton />
                 </div>
-                <div className="my-4">
+                <div className="mt-5 mb-5">
                   <div
                     style={{ height: "20px", borderBottom: "1px solid lightgray" }}
                     className="w-100 text-center"
@@ -45,7 +45,7 @@ const LoginPage: React.FunctionComponent = () => {
                   <Login />
                 </div>
               </div>
-            </div>
+            </section>
           </Col>
         </Row>
       </Container>
