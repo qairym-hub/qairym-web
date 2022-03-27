@@ -4,7 +4,8 @@ import * as Icon from 'react-bootstrap-icons'
 
 import DefaultButton from '../../../components/buttons/DefaultButton'
 
-const Login = () => {
+const Login: React.FunctionComponent = () => {
+
   return (
     <>
       <div
