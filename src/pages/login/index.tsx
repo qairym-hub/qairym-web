@@ -1,9 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import GoogleButton from './components/GoogleButton'
-import Header from './components/Header'
 
-import Login from './components/Login'
+import { GoogleButton, Header, Login } from './components'
 
 const LoginPage: React.FunctionComponent = () => {
 
@@ -24,13 +22,13 @@ const LoginPage: React.FunctionComponent = () => {
               className="d-flex align-items-center justify-content-center"
             >
               <div>
-                <div className="">
+                <div className="mb-5">
                   <Header />
                 </div>
-                <div className="d-flex justify-content-center my-5">
+                <div className="d-flex justify-content-center">
                   <GoogleButton />
                 </div>
-                <div className="mb-5">
+                <div className="my-4">
                   <div
                     style={{ height: "20px", borderBottom: "1px solid lightgray" }}
                     className="w-100 text-center"

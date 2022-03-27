@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
-import DefaultButton from '../../../components/buttons/DefaultButton'
+import { DefaultButton } from '../../../components'
 
 const Login: React.FunctionComponent = () => {
 
