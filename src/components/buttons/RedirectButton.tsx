@@ -3,30 +3,38 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 
 interface ButtonComponentProps {
+    className?: string,
     text: string,
+    fluid: boolean,
     color?: string,
     icon?: React.ReactNode,
     to: string
 }
 
-const RedirectButton = ({ text, color = 'primary', icon, to }: ButtonComponentProps) => {
+const RedirectButton: React.FunctionComponent<ButtonComponentProps> = (
+    {
+        className,
+        text,
+        fluid,
+        color = 'primary',
+        icon,
+        to
+    }
+) => {
+
     return (
         <>
             <Link href={to}>
                 <Button
-                    className="d-flex align-items-center border rounded-extra"
+                    className={`border rounded-extra ${fluid && "w-100"} ${className}`}
                     variant={color}
                 >
-                    <span className="d-flex px-5">
-                        {icon && (
-                            <div className="d-flex align-items-center">
-                                {icon}
-                            </div>
-                        )}
+                    <div className="d-flex align-items-center justify-content-center px-3">
+                        {icon}
                         <span className="text-roboto-500 px-2">
                             {text}
                         </span>
-                    </span>
+                    </div>
                 </Button>
             </Link>
         </>
