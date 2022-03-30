@@ -1,10 +1,15 @@
 import type { NextPage } from 'next'
-import App from './_app'
+import Link from 'next/link'
 
 
 const IndexPage: NextPage = () => {
   return (
-      <App />
+      <>
+        <Link href={"/login"}>Login</Link>
+        <br />
+        <Link href={"/register"}>register</Link>
+
+      </>
     )
   }
   

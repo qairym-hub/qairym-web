@@ -18,7 +18,7 @@ const CreateAccount: React.FunctionComponent = () => {
                 Нет аккаунта?
             </span>
             <Link
-                href={{}}
+                href={"/register"}
             >
                 Создать аккаунт
             </Link>
