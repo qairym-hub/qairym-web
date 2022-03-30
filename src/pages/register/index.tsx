@@ -1,8 +1,17 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
+import { SignUp, AccountExist } from './components'
 
-const SignUpPage = () => {
+const SignUpPage: React.FunctionComponent = () => {
   return (
-    <div>SignUpPage</div>
+    <>
+      <Container fluid>
+        <AccountExist/>
+        <Container>
+          <SignUp/>
+        </Container>
+      </Container>
+    </>
   )
 }
 

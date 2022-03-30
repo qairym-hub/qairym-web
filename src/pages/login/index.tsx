@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 import { CreateAccount, GoogleButton, Header, Login, Poster } from './components'
 
-const LoginPage: React.FunctionComponent = () => {
+const LoginPage = () => {
 
   return (
     <>
