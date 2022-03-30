@@ -9,7 +9,7 @@ const GoogleButton: React.FunctionComponent = () => {
         <>
             <DefaultButton
                 text="Войти с помощью Google"
-                color="none"
+                color="white"
                 icon={<img src="./google.svg" alt="google" />}
             />
         </>
