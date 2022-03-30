@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 
 import { DefaultButton } from '../../../components'
@@ -14,19 +14,23 @@ const Login: React.FunctionComponent = () => {
       >
         <Form>
           <Form.Group className="mb-3">
-            <Form.Control
-              className="rounded-extra"
-              type="text"
-              placeholder="Имя пользователя"
-            />
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Имя пользователя"
+            >
+              <Form.Control type="text" placeholder="Имя пользователя" className="rounded-extra"/>
+            </FloatingLabel>
           </Form.Group>
+
           <Form.Group className="mb-3">
-            <Form.Control
-              className="rounded-extra"
-              type="password"
-              placeholder="Пароль"
-            />
+            <FloatingLabel
+              controlId="floatingPassword"
+              label="Пароль"
+            >
+              <Form.Control type="password" placeholder="Пароль" className="rounded-extra"/>
+            </FloatingLabel>
           </Form.Group>
+
           <Form.Group className="mt-5">
             <DefaultButton
               text="Войти"

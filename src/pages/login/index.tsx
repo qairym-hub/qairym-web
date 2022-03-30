@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
-import { GoogleButton, Header, Login, Poster } from './components'
+import { CreateAccount, GoogleButton, Header, Login, Poster } from './components'
 
 const LoginPage: React.FunctionComponent = () => {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid >
         <Row>
           <Col xs lg>
             <section className="w-100 h-100 pt-3 pb-3 px-1">
@@ -18,7 +18,7 @@ const LoginPage: React.FunctionComponent = () => {
           </Col>
           <Col xs lg>
             <section
-              style={{ height: '710px' }}
+              style={{ height: '100vh' }}
               className="d-flex align-items-center justify-content-center w-100"
             >
               <div>
@@ -30,19 +30,22 @@ const LoginPage: React.FunctionComponent = () => {
                 </div>
                 <div className="mt-5 mb-5">
                   <div
-                    style={{ height: "20px", borderBottom: "1px solid lightgray" }}
+                    style={{ textAlign: "center", borderBottom: "1px solid lightgray", lineHeight: "0.1em", margin: "10px 0 10px" }}
                     className="w-100 text-center"
                   >
-                    <span
-                      style={{}}
-                      className=""
-                    >
-                      я хз как это место сделать
-                    </span>
+                      <span
+                        style={{ background:"#fff", padding: "0 10px", color: "black" }}
+                        className=""
+                      >
+                        или используйте эл. почту
+                      </span>
                   </div>
                 </div>
                 <div>
                   <Login />
+                </div>
+                <div>
+                  <CreateAccount />
                 </div>
               </div>
             </section>
