@@ -8,7 +8,8 @@ interface ButtonComponentProps {
   color?: string,
   icon?: React.ReactNode,
   loading?: boolean,
-  onClick?: any
+  onClick?: any,
+  iconPlace?: boolean,
 }
 
 const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
@@ -19,7 +20,8 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
     color = 'primary',
     icon,
     loading,
-    onClick
+    onClick,
+    iconPlace
   }
 ) => {
 
@@ -30,12 +32,15 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
         variant={color}
         onClick={onClick}
         disabled={loading}
+
       >
         <div className="d-flex align-items-center justify-content-center px-3">
-          {icon}
+          {iconPlace ? icon : null }
           <span className="text-roboto-500 px-2">
             {text}
           </span>
+          {iconPlace ? null : icon}
+
         </div>
       </Button>
     </>
