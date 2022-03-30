@@ -2,34 +2,34 @@ import axios, { AxiosError } from 'axios'
 
 class UserController {
 
-    public async login(username: String, password: String, callback: any) {
+    public async login(username: String, password: String, onSuccess: any, onError: any) {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_BASE_URL}/api/user/login?username=${username}&password=${password}`
             )
 
-            return callback(response.data)
-        } catch (error: AxiosError | any) {
+            return onSuccess(response.data)
+        } catch (error: any | AxiosError) {
             if (axios.isAxiosError(error))
-                return callback(null, error)
+                return onError(error)
 
-            return console.error('Stock error', error)
+            return console.error('CLIENT_ERR', error)
         }
     }
 
-    public async create(user: Object, callback: any) {
+    public async create(user: Object, onSuccess: any, onError: any) {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_BASE_URL}/api/user/register`,
                 user
             )
 
-            return callback(response.data)
-        } catch (error: AxiosError | any) {
+            return onSuccess(response.data)
+        } catch (error: any | AxiosError) {
             if (axios.isAxiosError(error))
-                return callback(null, error)
+                return onError(null, error)
 
-            return console.error('Stock error', error)
+            return console.error('CLIENT_ERR', error)
         }
     }
 
