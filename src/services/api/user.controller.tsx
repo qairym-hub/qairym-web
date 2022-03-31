@@ -2,16 +2,16 @@ import axios, { AxiosError } from 'axios'
 
 class UserController {
 
-    public async login(username: String, password: String, onSuccess: any, onError: any) {
+    public async login(username: String, password: String, callback: any) {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_BASE_URL}/api/user/login?username=${username}&password=${password}`
             )
 
-            return onSuccess(response.data)
+            return callback(response.data, null)
         } catch (error: any | AxiosError) {
             if (axios.isAxiosError(error))
-                return onError(error)
+                return callback(null, error)
 
             return console.error('CLIENT_ERR', error)
         }
@@ -41,3 +41,5 @@ class UserController {
 
     }
 }
+
+export default new UserController()

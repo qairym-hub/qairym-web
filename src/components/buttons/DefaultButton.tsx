@@ -8,7 +8,8 @@ interface ButtonComponentProps {
   color?: string,
   icon?: React.ReactNode,
   loading?: boolean,
-  onClick?: any
+  onClick?: any,
+  iconLeft?: boolean,
 }
 
 const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
@@ -19,7 +20,8 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
     color = 'primary',
     icon,
     loading,
-    onClick
+    onClick,
+    iconLeft
   }
 ) => {
 
@@ -30,27 +32,31 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
         variant={color}
         onClick={onClick}
         disabled={loading}
+
       >
-        {loading ? (
-          <div className="d-flex align-items-center justify-content-center px-3">
-            <Spinner
-              animation="border"
-              size="sm"
-              role="status"
-            />
-            <span className="text-roboto-500 px-2">
-              Выполняем вход...
-            </span>
-          </div>
-        ) : (
-          <div className="d-flex align-items-center justify-content-center px-3">
-            {icon}
-            <span className="text-roboto-500 px-2">
-              {text}
-            </span>
-          </div>
-        )}
-      </Button>
+        {
+          loading ? (
+            <div className="d-flex align-items-center justify-content-center px-3">
+              <Spinner
+                animation="border"
+                size="sm"
+                role="status"
+              />
+              <span className="text-roboto-500 px-2">
+                Выполняем вход...
+              </span>
+            </div>
+          ) : (
+            <div className="d-flex align-items-center justify-content-center px-3">
+              {iconLeft && icon}
+              <span className="text-roboto-500 px-2">
+                {text}
+              </span>
+              {iconLeft ? null : icon}
+            </div>
+          )
+        }
+      </Button >
     </>
   )
 }

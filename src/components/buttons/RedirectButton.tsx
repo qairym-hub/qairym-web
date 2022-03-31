@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 interface ButtonComponentProps {
     className?: string,
     text: string,
-    fluid: boolean,
+    fluid?: boolean,
     color?: string,
     icon?: React.ReactNode,
     to: string

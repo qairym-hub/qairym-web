@@ -9,9 +9,11 @@ const GoogleButton: React.FunctionComponent = () => {
         <>
             <DefaultButton
                 fluid
-                text="Войти с помощью Google"
+                text="Использовать Google"
                 color="white"
-                icon={<img src="./google.svg" alt="google" />}
+                iconPlace
+                icon={<img src="./google.svg" alt="google"
+                />}
             />
         </>
     )
