@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Spinner } from 'react-bootstrap'
 
 interface ButtonComponentProps {
   className?: string,
@@ -31,12 +31,25 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
         onClick={onClick}
         disabled={loading}
       >
-        <div className="d-flex align-items-center justify-content-center px-3">
-          {icon}
-          <span className="text-roboto-500 px-2">
-            {text}
-          </span>
-        </div>
+        {loading ? (
+          <div className="d-flex align-items-center justify-content-center px-3">
+            <Spinner
+              animation="border"
+              size="sm"
+              role="status"
+            />
+            <span className="text-roboto-500 px-2">
+              Выполняем вход...
+            </span>
+          </div>
+        ) : (
+          <div className="d-flex align-items-center justify-content-center px-3">
+            {icon}
+            <span className="text-roboto-500 px-2">
+              {text}
+            </span>
+          </div>
+        )}
       </Button>
     </>
   )
