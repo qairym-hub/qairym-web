@@ -1,5 +1,6 @@
 import React from 'react'
 import { Alert } from 'react-bootstrap'
+import { TextRight } from 'react-bootstrap-icons'
 
 interface AlertMessageComponentProps {
     variant: string,
@@ -13,6 +14,7 @@ const AlertMessage: React.FunctionComponent<AlertMessageComponentProps> = (
         header,
         text
     }
+
 ) => {
 
     return (
@@ -26,9 +28,9 @@ const AlertMessage: React.FunctionComponent<AlertMessageComponentProps> = (
                         {header}
                     </Alert.Heading>
                 )}
-                <p className="">
+                <span>
                     {text}
-                </p>
+                </span>
             </Alert>
         </>
     )

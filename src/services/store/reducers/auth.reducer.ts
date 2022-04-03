@@ -16,10 +16,7 @@ const authReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SIGNIN_SUCCESS:
             return {
-                username: action.payload.username,
-                uid: action.payload.uid,
-                profile: action.payload.profile,
-                token: action.payload.token
+                token: action.token
             }
 
         case SIGNOUT_SUCCESS:

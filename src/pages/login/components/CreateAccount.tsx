@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
 
-import { DefaultButton } from '../../../components'
-
 const CreateAccount: React.FunctionComponent = () => {
 
-  return (
-    <>
-        <div
+    return (
+        <>
+            {/* <div
         style={{ width: "350px" }}
         className="border rounded-extra p-4"
         >
@@ -22,9 +20,20 @@ const CreateAccount: React.FunctionComponent = () => {
             >
                 Создать аккаунт
             </Link>
-        </div>
-    </>
-  )
+        </div> */}
+            <div className="d-flex justify-content-center mt-3">
+                <span
+                    style={{ fontSize: "15px" }}
+                    className="text-muted"
+                >
+                    Нет аккаунта?{' '}
+                    <Link href="/register">
+                        Создать
+                    </Link>
+                </span>
+            </div>
+        </>
+    )
 }
 
 export default CreateAccount
