@@ -1,8 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
-import { CreateAccount, GoogleButton, Header, Login, Poster } from './components'
-import Separator from './components/Separator'
+import { GoogleButton, Header, Login, Poster, Separator } from './components'
 
 const LoginPage = () => {
 

@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios'
-import Link from 'next/link'
+import Router from 'next/router'
 import React, { useState } from 'react'
 import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
@@ -46,11 +46,12 @@ const Login: React.FunctionComponent = (props: any) => {
         }, 1000)
       }
     )
-
   }
 
   return (
     <>
+      {props.authenticated && Router.push("/")}
+
       <div
         style={{ width: "350px" }}
         className="border rounded-extra p-4"
@@ -68,7 +69,11 @@ const Login: React.FunctionComponent = (props: any) => {
               label="Имя пользователя"
               onChange={handleUsernameChange}
             >
-              <Form.Control type="text" placeholder="Имя пользователя" className="rounded-extra" />
+              <Form.Control
+                type="text"
+                placeholder="Имя пользователя"
+                className="rounded-extra"
+              />
             </FloatingLabel>
           </Form.Group>
 
@@ -78,7 +83,11 @@ const Login: React.FunctionComponent = (props: any) => {
               label="Пароль"
               onChange={handlePasswordChange}
             >
-              <Form.Control type="password" placeholder="Пароль" className="rounded-extra" />
+              <Form.Control
+                type="password"
+                placeholder="Пароль"
+                className="rounded-extra"
+              />
             </FloatingLabel>
           </Form.Group>
 
