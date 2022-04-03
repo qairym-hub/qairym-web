@@ -1,11 +1,6 @@
-class AuthResponse {
-    public accessToken: String
-    public refreshToken: String
-
-    constructor(accessToken: String, refreshToken: String) {
-        this.accessToken = accessToken
-        this.refreshToken = refreshToken
-    }
+type AuthResponse = {
+    accessToken: string;
+    refreshToken: string;
 }
 
-export default AuthResponse
+export type { AuthResponse }

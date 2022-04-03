@@ -1,42 +1,49 @@
 import { AxiosError } from 'axios'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
-import { connect, DefaultRootState, RootStateOrAny } from 'react-redux'
+import { connect, RootStateOrAny } from 'react-redux'
 import { Action, Dispatch } from 'redux'
 
-
-import { DefaultButton } from '../../../components'
+import { AlertMessage, DefaultButton } from '../../../components'
 import userController from '../../../services/api/user.controller'
-import AuthResponse from '../../../services/models/AuthResponse'
+import { AuthResponse } from '../../../services/models/AuthResponse'
+import CreateAccount from './CreateAccount'
 
 const Login: React.FunctionComponent = (props: any) => {
-  const [username, setUsername] = useState<String>('')
-  const [password, setPassword] = useState<String>('')
-  const [user, setUser] = useState<Object>({})
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
-  const [error, setError] = useState<String | undefined>(undefined)
+  const [error, setError] = useState<string | undefined>(undefined)
   const [loading, setLoading] = useState<boolean | undefined>(false)
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError('')
     setUsername(e.target.value)
   }
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError('')
     setPassword(e.target.value)
   }
 
   const handleClick = () => {
+    setError('')
     setLoading(true)
 
     userController.login(
       username, password,
       (data: AuthResponse, error: AxiosError) => {
-        if (error)
-          return setError(error.message)
+        setTimeout(() => {
+          if (error) {
+            setError(error.message)
+            return setLoading(false)
+          }
 
-        setUser(data)
-        return setLoading(false)
+          props.login(data);
+          return setLoading(false)
+        }, 1000)
       }
     )
 
@@ -48,7 +55,13 @@ const Login: React.FunctionComponent = (props: any) => {
         style={{ width: "350px" }}
         className="border rounded-extra p-4"
       >
-        <Form >
+        <Form>
+          {error && (
+            <AlertMessage
+              text={error}
+              variant="danger"
+            />
+          )}
           <Form.Group className="mb-3">
             <FloatingLabel
               controlId="floatingInput"
@@ -79,6 +92,9 @@ const Login: React.FunctionComponent = (props: any) => {
             />
           </Form.Group>
         </Form>
+        <div>
+          <CreateAccount />
+        </div>
       </div>
     </>
   )
@@ -92,7 +108,14 @@ const mapState = (state: RootStateOrAny) => {
 
 const mapDispatch = (dispatch: Dispatch<Action>) => {
   return {
-    login: () => { }
+    login: (auth: AuthResponse) => {
+      return dispatch({
+        type: 'SIGIN_SUCCESS',
+        payload: {
+          auth
+        }
+      })
+    }
   }
 }
 
