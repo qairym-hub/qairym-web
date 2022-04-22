@@ -8,7 +8,6 @@ const IndexPage: NextPage = () => {
         <Link href={"/login"}>Login</Link>
         <br />
         <Link href={"/register"}>register</Link>
-
       </>
     )
   }
