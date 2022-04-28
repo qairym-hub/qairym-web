@@ -5,7 +5,7 @@ interface CircleActionButtonProps {
     className?: string,
     text?: string,
     color?: string,
-    icon?: React.ReactNode,
+    icon: React.ReactNode,
     onClick?: any
 }
 
@@ -19,14 +19,14 @@ const CircleActionButton: React.FunctionComponent<CircleActionButtonProps> = (
     }
 ) => {
     return (
-        <> 
-            <Button 
+        <>
+            <Button
                 className={`round-button-circle text-center align-items-center justify-content-center ${className}`}
                 onClick={onClick}
                 variant={color}
-                >
+            >
                 {icon}
-                <span className="text-roboto-500 px-2">
+                <span className="text-roboto-500">
                     {text}
                 </span>
             </Button>
