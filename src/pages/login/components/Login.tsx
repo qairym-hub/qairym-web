@@ -8,7 +8,7 @@ import { Action, Dispatch } from 'redux'
 
 import { AlertMessage, DefaultButton } from '../../../components'
 import userController from '../../../services/api/user.controller'
-import { AuthResponse } from '../../../services/models/AuthResponse'
+import { AuthResponse } from '../../../services/types'
 import CreateAccount from './CreateAccount'
 
 const Login: React.FunctionComponent = (props: any) => {
