@@ -1,3 +1,9 @@
 .rounded-extra {
     border-radius: 1.5vh;
 }
+
+.border-shadow {
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(0,0,0,0.33);
+    -moz-box-shadow: 0px 0px 23px -7px rgba(0,0,0,0.33);
+    box-shadow: 0px 0px 23px -7px rgba(0,0,0,0.33);
+}
