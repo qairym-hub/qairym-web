@@ -5,7 +5,7 @@ import { Badge } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 import { User } from '../../../services/types'
 
-const lorem_text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  software like Aldus PageMaker including versions of Lorem Ipsum."
+const lorem_text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  software like Aldus PageMaker including versions of Lorem Ipsum."
 
 interface PostCardProps {
     user: User,
@@ -36,13 +36,20 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
     return (
         <>
             <div
-                style={{ minHeight: "200px", width: "400px", backgroundColor: bg }}
-                className="pt-4 pb-3 px-4 border rounded-extra"
+                style={{ minHeight: "200px", width: "400px" }}
+                className="border rounded-extra"
             >
-                <div>
-                    <span className="text-roboto-300 fs-5">
-                        {title}
-                    </span>
+                <div className="mb-3 p-2">
+                    <div className="bg-primary text-white rounded-extra p-3">
+                        <span
+                            style={{ lineHeight: "0" }}
+                            className="text-roboto-500 fs-5"
+                        >
+                            {title}
+                        </span>
+                    </div>
+                </div>
+                <div className="px-4">
                     <div className="d-flex align-items-center mt-2">
                         <span
                             style={{ fontSize: "15px" }}
@@ -52,7 +59,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
                         </span>
                         <span
                             style={{ fontSize: "10px" }}
-                            className="text-muted mx-2"
+                            className="text-muted mx-1"
                         >
                             • {getRelativeDate(date)}
                         </span>
@@ -78,26 +85,27 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
                         </span>
                     </div>
                 </div>
-                <div>
+                <div className="px-4 pb-3">
                     {open ? (
                         <div>
-                            <p className="mt-2">
+                            <p
+                                style={{ whiteSpace: "pre-line" }}
+                                className="mt-2"
+                            >
                                 {lorem_text} {text}
                             </p>
                             <div>
                                 {links.map((link) => {
                                     return (
-                                        <div>
-                                            <span>
-                                                <Icon.Link45deg
-                                                    color='gray'
-                                                    size="20"
-                                                />
-                                            </span>
+                                        <div className="d-flex align-items-center">
+                                            <Icon.Link45deg
+                                                size="20"
+                                                className="text-primary"
+                                            />
                                             <div className="d-inline mx-1"></div>
                                             <span
-                                                style={{ fontSize: "15px" }}
-                                                className="text-muted"
+                                                style={{ fontSize: "15px", cursor: "pointer" }}
+                                                className="text-primary text-roboto-500"
                                             >
                                                 {link}
                                             </span>
