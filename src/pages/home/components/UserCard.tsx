@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Icon from 'react-bootstrap-icons'
 
-import { CircleActionButton } from '../../../components'
+import { CircleActionButton, DefaultButton } from '../../../components'
 
 interface UserCardProps {
     photoUrl?: string,
@@ -19,33 +19,33 @@ const UserCard: React.FunctionComponent<UserCardProps> = (
         <>
             <div
                 style={{ width: "300px", paddingLeft: "20px", paddingRight: "20px" }}
-                className="d-flex border rounded-extra py-3"
+                className="border rounded-extra py-3"
             >
                 <div
-                    style={{ flex: "70%", }}
-                    className="d-flex align-items-center"
+                    className=""
                 >
+                    {/*
                     <div style={{ borderRadius: "50%", aspectRatio: "1/1", height: "100%", background: "lightblue" }}>
 
-                    </div>
-                    <span className="text-roboto-700 fs-5 mx-2">
+                    </div>*/}
+                    <span className="text-roboto-700 fs-5 px-1">
                         {username}
                     </span>
                 </div>
 
                 <div
-                    style={{ flex: "30%" }}
-                    className="d-flex align-items-center justify-content-end"
+                    className="d-flex flex-column justify-content-around"
                 >
-                    <div>
-
-                    </div>
-                    <div className="mx-1">
-
-                    </div>
-                    <div>
-
-                    </div>
+                        {/* <div className="d-inline">
+                        <DefaultButton
+                            text="Button"
+                        />
+                        </div>
+                        <div className="d-inline">
+                        <DefaultButton
+                            text="Button"
+                        />
+                        </div> */}  
                 </div>
             </div>
         </>
