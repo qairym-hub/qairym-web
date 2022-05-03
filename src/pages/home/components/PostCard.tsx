@@ -3,7 +3,10 @@ import "moment/locale/ru";
 import React, { useState } from "react";
 import { Badge } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import { User } from "../../../services/types";
+import { User } from '../../../services/types'
+import BodyPost from './BodyPost'
+import HeaderPost from './HeaderPost'
+import SubHeadPost from './SubHeadPost'
 
 const lorem_text =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  software like Aldus PageMaker including versions of Lorem Ipsum.";
@@ -17,28 +20,18 @@ interface PostCardProps {
     bg?: string;
 }
 
-const PostCard: React.FunctionComponent<
-    PostCardProps
-> = ({
-    user,
-    title,
-    text,
-    links,
-    date,
-    bg = "white",
-}) => {
-    const [open, setOpen] =
-        useState<boolean>(false);
+const PostCard: React.FunctionComponent<PostCardProps> = (
+    {
+        user,
+        title,
+        text,
+        links,
+        date,
+        bg = 'white'
+    }
+) => {
 
-    const getRelativeDate = (date: string) => {
-        moment();
-        return moment(
-            date,
-            "DD.MM.YYYY"
-        ).fromNow();
-    };
-
-    return (
+    return (ё
         <>
             <div
                 style={{
@@ -47,153 +40,17 @@ const PostCard: React.FunctionComponent<
                 }}
                 className="border rounded-extra"
             >
-                <div className="mb-3 p-2">
-                    <div className="bg-primary text-white rounded-extra p-3">
-                        <span
-                            style={{
-                                lineHeight: "0",
-                            }}
-                            className="text-roboto-500 fs-4"
-                        >
-                            {title}
-                        </span>
-                    </div>
-                </div>
-                <div className="px-4">
-                    <div className="d-flex align-items-center mt-2">
-                        <span
-                            style={{
-                                fontSize: "20px",
-                            }}
-                            className="text-roboto-500"
-                        >
-                            {user.username}
-                        </span>
-                        <span
-                            style={{
-                                fontSize: "15px",
-                            }}
-                            className="text-muted mx-1"
-                        >
-                            •{" "}
-                            {getRelativeDate(
-                                date
-                            )}
-                        </span>
-                    </div>
-                    <div className="d-flex align-items-start">
-                        <span
-                            style={{
-                                fontSize: "15px",
-                            }}
-                            className="text-muted"
-                        >
-                            гум. помощь
-                        </span>
-                        <span
-                            style={{
-                                fontSize: "15px",
-                            }}
-                            className="text-roboto-500 text-muted mx-1"
-                        >
-                            /
-                        </span>
-                        <span
-                            style={{
-                                fontSize: "15px",
-                            }}
-                            className="text-muted"
-                        >
-                            сборы
-                        </span>
-                    </div>
-                </div>
-                <div className="px-4 pb-3">
-                    {open && (
-                        <div>
-                            <p
-                                style={{
-                                    whiteSpace:
-                                        "pre-line",
-                                }}
-                                className="mt-2"
-                            >
-                                {lorem_text}{" "}
-                                {text}
-                            </p>
-                            <div>
-                                {links.map(
-                                    (link) => {
-                                        return (
-                                            <div className="d-flex align-items-center">
-                                                <Icon.Link45deg
-                                                    size="20"
-                                                    className="text-primary"
-                                                />
-                                                <div className="d-inline mx-1"></div>
-                                                <span
-                                                    style={{
-                                                        fontSize:
-                                                            "15px",
-                                                        cursor: "pointer",
-                                                    }}
-                                                    className="text-primary text-roboto-500"
-                                                >
-                                                    {
-                                                        link
-                                                    }
-                                                </span>
-                                            </div>
-                                        );
-                                    }
-                                )}
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                <div
-                    style={{
-                        cursor: "pointer",
-                    }}
-                    className=" text-muted px-4"
-                    onClick={() => setOpen(!open)}
-                >
-                    {open ? (
-                        <div className="d-flex align-items-center pb-4">
-                            <Icon.ArrowUpCircleFill
-                                color="gray"
-                                size="18"
-                            />
-                            <div className="d-inline mx-1"></div>
-                            <span
-                                style={{
-                                    fontSize:
-                                        "15px",
-                                    cursor: "pointer",
-                                }}
-                            >
-                                Свернуть
-                            </span>
-                        </div>
-                    ) : (
-                        <div className="d-flex align-items-center pb-4">
-                            <Icon.ArrowDownCircleFill
-                                color="gray"
-                                size="18"
-                            />
-                            <div className="d-inline mx-1"></div>
-                            <span
-                                style={{
-                                    fontSize:
-                                        "15px",
-                                }}
-                            >
-                                Подробнее
-                            </span>
-                        </div>
-                    )}
-                </div>
+                <HeaderPost 
+                    title={title}
+                />
+                <SubHeadPost 
+                    username={user.username} 
+                    date={date} 
+                />
+                <BodyPost
+                    text={text}
+                    links={links}
+                />
             </div>
         </>
     );
