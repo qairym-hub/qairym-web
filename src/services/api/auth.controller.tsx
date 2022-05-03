@@ -1,6 +1,15 @@
 import axios, { AxiosError } from 'axios'
+import { UserRegistrationForm } from '../types'
 
-class UserController {
+class AuthController {
+    public getHeader(token: string): object {
+        return {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+    }
 
     public async login(username: String, password: String, callback: any) {
         try {
@@ -17,7 +26,7 @@ class UserController {
         }
     }
 
-    public async create(user: Object, onSuccess: any, onError: any) {
+    public async create(user: UserRegistrationForm, onSuccess: any, onError: any) {
         try {
             const response = await axios.post(
                 `${process.env.REACT_APP_BASE_URL}/api/user/register`,
@@ -33,8 +42,23 @@ class UserController {
         }
     }
 
-    public async getById(userId: Number, callback: any) {
+    public async getById(userId: Number, token: string, onSuccess: any, onError: any) {
+        const header = this.getHeader(token)
 
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_BASE_URL}/api/user/find/id/${userId}`,
+                header
+            )
+
+            return onSuccess(response.data, null)
+        } catch (error: any | AxiosError) {
+            if (axios.isAxiosError(error)) {
+                return onError(null, error)
+            }
+
+            return console.error('CLIENT_ERR', error)
+        }
     }
 
     public async loadByUsername(username: String, token: String) {
@@ -42,4 +66,4 @@ class UserController {
     }
 }
 
-export default new UserController()
+export default new AuthController()
