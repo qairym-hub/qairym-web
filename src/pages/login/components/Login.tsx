@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
 import { connect, RootStateOrAny } from 'react-redux'
 import { Action, Dispatch } from 'redux'
 
-import { AlertMessage, DefaultButton } from '../../../components'
+import { AlertMessage, DefaultButton, RedirectButton } from '../../../components'
 import userController from '../../../services/api/user.controller'
 import { AuthResponse } from '../../../services/types'
 import CreateAccount from './CreateAccount'
@@ -18,6 +18,8 @@ const Login: React.FunctionComponent = (props: any) => {
   const [error, setError] = useState<string | undefined>(undefined)
   const [loading, setLoading] = useState<boolean | undefined>(false)
 
+  const router = useRouter()
+
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError('')
     setUsername(e.target.value)
@@ -28,6 +30,7 @@ const Login: React.FunctionComponent = (props: any) => {
     setPassword(e.target.value)
   }
 
+  
   const handleClick = () => {
     setError('')
     setLoading(true)
@@ -46,6 +49,7 @@ const Login: React.FunctionComponent = (props: any) => {
         }, 1000)
       }
     )
+    router.push('/home')
   }
 
   return (
