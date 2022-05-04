@@ -11,7 +11,7 @@ const HeaderPost: React.FunctionComponent<HeaderPostProps> = (
 ) => {
     return (
         <>
-            <div className="mb-3 p-2">
+            <div className="p-2">
                 <div className="bg-primary text-white rounded-extra p-3">
                     <span
                         style={{ lineHeight: "0" }}

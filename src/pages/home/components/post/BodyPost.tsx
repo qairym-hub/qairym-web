@@ -17,19 +17,19 @@ const BodyPost: React.FunctionComponent<BodyPostProps> = (
 
     return (
         <>
-            <div className="px-4 pb-3">
+            <div className="px-4">
                 {open && (
                     <div>
                         <p
                             style={{
-                                whiteSpace:
-                                    "pre-line",
+                                whiteSpace: "pre-line",
+                                margin: "0",
+                                padding: "0"
                             }}
-                            className="mt-2"
                         >
                             {lorem_text}
                         </p>
-                        <div>
+                        <div className="py-4">
                             {links.map(
                                 (link) => {
                                     return (
@@ -41,8 +41,7 @@ const BodyPost: React.FunctionComponent<BodyPostProps> = (
                                             <div className="d-inline mx-1"></div>
                                             <span
                                                 style={{
-                                                    fontSize:
-                                                        "15px",
+                                                    fontSize: "15px",
                                                     cursor: "pointer",
                                                 }}
                                                 className="text-primary text-roboto-500"
@@ -57,48 +56,43 @@ const BodyPost: React.FunctionComponent<BodyPostProps> = (
                     </div>
                 )}
             </div>
-            <div>
             <div
-                    style={{
-                        cursor: "pointer",
-                    }}
-                    className=" text-muted px-4"
+                className="mt-auto pb-4"
+            >
+                <div
+                    style={{ cursor: "pointer" }}
+                    className="text-muted px-4"
                     onClick={() => setOpen(!open)}
                 >
-                    {open ? (
-                        <div className="d-flex align-items-center pb-4">
-                            <Icon.ArrowUpCircleFill
-                                color="gray"
-                                size="18"
-                            />
-                            <div className="d-inline mx-1"></div>
-                            <span
-                                style={{
-                                    fontSize:
-                                        "15px",
-                                    cursor: "pointer",
-                                }}
-                            >
-                                Свернуть
-                            </span>
-                        </div>
-                    ) : (
-                        <div className="d-flex align-items-center pb-4">
-                            <Icon.ArrowDownCircleFill
-                                color="gray"
-                                size="18"
-                            />
-                            <div className="d-inline mx-1"></div>
-                            <span
-                                style={{
-                                    fontSize:
-                                        "15px",
-                                }}
-                            >
-                                Подробнее
-                            </span>
-                        </div>
-                    )}
+                    <div>
+                        {open ? (
+                            <div className="d-flex align-items-center">
+                                <Icon.ArrowUpCircleFill
+                                    color="gray"
+                                    size="18"
+                                />
+                                <div className="d-inline mx-1"></div>
+                                <span
+                                    style={{ fontSize: "15px" }}
+                                >
+                                    Свернуть
+                                </span>
+                            </div>
+                        ) : (
+                            <div className="d-flex align-items-center">
+                                <Icon.ArrowDownCircleFill
+                                    color="gray"
+                                    size="18"
+                                />
+                                <div className="d-inline mx-1"></div>
+                                <span
+                                    style={{ fontSize: "15px" }}
+                                >
+                                    Подробнее
+                                </span>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </>

@@ -18,34 +18,34 @@ const UserCard: React.FunctionComponent<UserCardProps> = (
     return (
         <>
             <div
-                style={{ width: "300px", paddingLeft: "20px", paddingRight: "20px" }}
-                className="border rounded-extra py-3"
+                style={{ width: "300px", paddingLeft: "20px", paddingRight: "20px",  borderRadius: "2vh" }}
+                className="border rounded-extra d-flex bg-primary text-white p-3"
             >
-                <div
-                    className=""
-                >
-                    {/*
-                    <div style={{ borderRadius: "50%", aspectRatio: "1/1", height: "100%", background: "lightblue" }}>
-
-                    </div>*/}
-                    <span className="text-roboto-700 fs-5 px-1">
-                        {username}
-                    </span>
+                <div style={{ flex: "20%" }}>
+                    <div
+                        style={{ height: "50px", width: "50px" }} 
+                        className="bg-white rounded-extra"
+                    >
+                    </div>
                 </div>
 
-                <div
-                    className="d-flex flex-column justify-content-around"
+                <div 
+                    style={{ flex: "70%" }}
+                    className="d-flex flex-column"
                 >
-                        {/* <div className="d-inline">
-                        <DefaultButton
-                            text="Button"
-                        />
-                        </div>
-                        <div className="d-inline">
-                        <DefaultButton
-                            text="Button"
-                        />
-                        </div> */}  
+                    <span className="text-roboto-700 fs-5">
+                        {username}
+                    </span>
+                    <div
+                        style={{ opacity: "0.75" }} 
+                        className="d-flex align-items-center"
+                    >
+                        <Icon.Building />
+                        <div className="d-inline mx-1"></div>
+                        <span style={{ fontSize: "15px" }}>
+                            Shymkent
+                        </span>
+                    </div>
                 </div>
             </div>
         </>

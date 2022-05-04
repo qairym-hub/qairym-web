@@ -3,7 +3,7 @@ import "moment/locale/ru";
 import React, { useState } from "react";
 import { Badge } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
-import { User } from '../../../services/types'
+import { User } from '../../../../services/types'
 import BodyPost from './BodyPost'
 import HeaderPost from './HeaderPost'
 import SubHeadPost from './SubHeadPost'
@@ -31,14 +31,15 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
     }
 ) => {
 
-    return (ё
+    return (
         <>
             <div
                 style={{
                     minHeight: "200px",
-                    width: "500px",
+                    maxWidth: "450px",
+                    width: "100%",
                 }}
-                className="border rounded-extra"
+                className="d-flex flex-column border rounded-extra"
             >
                 <HeaderPost 
                     title={title}

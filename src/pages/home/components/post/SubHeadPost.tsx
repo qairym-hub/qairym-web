@@ -20,8 +20,8 @@ const SubHeadPost: React.FunctionComponent<SubHeadPostProps> = (
     }
     return (
         <>
-            <div className="px-4">
-                    <div className="d-flex align-items-center mt-2">
+            <div className="p-4">
+                    <div className="d-flex align-items-center">
                         <span
                             style={{ fontSize: "15px" }}
                             className="text-roboto-500"

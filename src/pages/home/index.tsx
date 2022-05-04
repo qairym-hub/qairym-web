@@ -4,7 +4,7 @@ import {
     Row,
     Col,
 } from "react-bootstrap";
-import PostCard from "./components/PostCard";
+import PostCard from "./components/post/PostCard";
 import UserCard from "./components/UserCard";
 
 const posts = [
@@ -52,60 +52,30 @@ const posts = [
 const HomePage: React.FunctionComponent = () => {
     return (
         <>
-            <div
-                style={{ paddingTop: "50px" }}
-                className=""
-            >
-                <Container>
-                    {/* <div className="my-4">
-                        <Container>
-                            <UserCard username="talgatulyzh" />
-                        </Container>
-                    </div> */}
-                    <div className="mt-5">
-                        <Container className="d-flex justify-content-start">
-                            <Row>
-                                <Col>
-                                    <Container>
-                                        <Col className="pt-4 p-absolute">
-                                            <UserCard 
-                                                username="talgatulyzh"
-                                            />
-                                        </Col>
-                                    </Container>
-                                </Col>
-                                <Col>
-                                    <Container>
-                                        {posts.map((post) => {
-                                                return (
-                                                    <Col className="p-4">
-                                                        <PostCard
-                                                            user={
-                                                                post.user
-                                                            }
-                                                            title={
-                                                                post.title
-                                                            }
-                                                            text={
-                                                                post.text
-                                                            }
-                                                            links={
-                                                                post.links
-                                                            }
-                                                            date={
-                                                                post.date
-                                                            }
-                                                        />
-                                                    </Col>
-                                                );
-                                            }
-                                        )}
-                                    </Container>
-                                </Col>
-                            </Row>
-                        </Container>
+            <div className="p-4">
+                <div className="d-flex justify-content-center p-4">
+                    <UserCard 
+                        username="talgatulyzh"
+                    />
+                </div>
+                <div className="d-flex justify-content-center">
+                    <div>
+                        {posts.map((post) => {
+                                return (
+                                    <div className="p-3">
+                                        <PostCard
+                                            user={post.user}
+                                            title={post.title}
+                                            text={post.text}
+                                            links={post.links}
+                                            date={post.date}
+                                        />
+                                    </div>
+                                );
+                            }
+                        )}
                     </div>
-                </Container>
+                </div>
             </div>
         </>
     );

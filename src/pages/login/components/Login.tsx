@@ -7,7 +7,7 @@ import { connect, RootStateOrAny } from 'react-redux'
 import { Action, Dispatch } from 'redux'
 
 import { AlertMessage, DefaultButton, RedirectButton } from '../../../components'
-import userController from '../../../services/api/user.controller'
+import userController from '../../../services/api/auth.controller'
 import { AuthResponse } from '../../../services/types'
 import CreateAccount from './CreateAccount'
 
@@ -54,7 +54,7 @@ const Login: React.FunctionComponent = (props: any) => {
 
   return (
     <>
-      {props.authenticated && Router.push("/")}
+      {props.authenticated && Router.push("/home")}
 
       <div
         style={{ width: "350px" }}
