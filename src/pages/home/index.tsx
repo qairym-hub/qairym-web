@@ -4,6 +4,7 @@ import {
     Row,
     Col,
 } from "react-bootstrap";
+import * as Icon from "react-bootstrap-icons";
 import PostCard from "./components/post/PostCard";
 import UserCard from "./components/UserCard";
 
@@ -53,12 +54,67 @@ const HomePage: React.FunctionComponent = () => {
     return (
         <>
             <div className="p-4">
-                <div className="d-flex justify-content-center p-4">
+                {/* <div className="d-flex justify-content-center p-4">
                     <UserCard 
                         username="talgatulyzh"
                     />
-                </div>
+                </div> */}
+                <Container style={{ position: "relative" }}>
                 <div className="d-flex justify-content-center">
+                    <div 
+                        style={{ position: "absolute", left: 0 }}
+                        className="p-3"
+                    >
+                        <div>
+                            <div>
+                                <UserCard 
+                                    username="talgatulyzh"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="mt-4">
+                            <div className="border rounded-extra px-2 py-2">
+                                <div
+                                    style={{ cursor: "pointer" }} 
+                                    className="d-flex p-2 clickable rounded-extra"
+                                >
+                                    <div 
+                                        style={{ flex: "20%" }}
+                                        className="d-flex align-items-center justify-content-center"
+                                    >
+                                        <Icon.PlusCircleFill 
+                                            size="20"
+                                        />
+                                    </div>
+                                    <div style={{ flex: "80%" }}>
+                                        <span>
+                                            Создать
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="my-1"></div>
+                                <div
+                                    style={{ cursor: "pointer" }} 
+                                    className="d-flex p-2 clickable rounded-extra"
+                                >
+                                    <div 
+                                        style={{ flex: "20%" }}
+                                        className="d-flex align-items-center justify-content-center"
+                                    >
+                                        <Icon.InputCursorText 
+                                            size="20"
+                                        />
+                                    </div>
+                                    <div style={{ flex: "80%" }}>
+                                        <span>
+                                            Найти
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         {posts.map((post) => {
                                 return (
@@ -76,6 +132,7 @@ const HomePage: React.FunctionComponent = () => {
                         )}
                     </div>
                 </div>
+                </Container>
             </div>
         </>
     );
