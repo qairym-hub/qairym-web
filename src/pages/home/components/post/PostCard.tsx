@@ -36,10 +36,10 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
             <div
                 style={{
                     minHeight: "200px",
-                    maxWidth: "450px",
+                    maxWidth: "425px",
                     width: "100%",
                 }}
-                className="d-flex flex-column border rounded-extra"
+                className="d-flex flex-column border rounded-extra background-white"
             >
                 <HeaderPost 
                     title={title}
