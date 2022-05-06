@@ -65,7 +65,7 @@ const HomePage: React.FunctionComponent = () => {
                 <Container style={{ position: "relative" }} fluid>
                     <div className="d-flex justify-content-center">
                         <div 
-                            style={{ position: "fixed", left: "18%" }}
+                            style={{ position: "fixed", left: "10%" }}
                             className="p-3"
                         >
                             <div>
