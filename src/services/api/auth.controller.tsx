@@ -30,10 +30,7 @@ class AuthController {
     public async create(user: any, onSuccess: any, onError: any) {
         try {
             const response = await axios.post(
-                `https://qaihub.herokuapp.com/api/user/save`,{headers: {
-                    'Access-Control-Allow-Origin': true,
-                  }},
-                user
+                `https://qaihub.herokuapp.com/api/user/save`, user
             )
 
             return onSuccess(response.data)

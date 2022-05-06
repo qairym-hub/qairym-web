@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
@@ -5,11 +6,12 @@ import { DefaultButton } from '../../../components'
 import authController from '../../../services/api/auth.controller'
 
 const SignUp = () => {
-  const [ email, setEmail ] = useState('')
+  // const [ email, setEmail ] = useState('')
   const [ username, setUsername ] = useState('')
   const [ password, setPassword ] = useState('') 
 
   const auth = authController
+  const router = useRouter()
 
   const handleSignUp = () => {
     const newUser = {
@@ -20,6 +22,7 @@ const SignUp = () => {
       }
     }
     auth.create(newUser, () => {console.log("Зареган")}, ()=>{})
+    router.push("/home")
   }
 
   return (
@@ -29,14 +32,14 @@ const SignUp = () => {
         className="border rounded-extra p-4 text-center"
       >
         <Form >
-          <Form.Group className="mb-2">
+          {/* <Form.Group className="mb-2">
             <FloatingLabel
               controlId="floatingInput"
               label="Электронная почта"
             >
               <Form.Control type="text" placeholder="Электронная почта" className="rounded-extra" value={email} onChange={(e) => setEmail(e.target.value)} />
             </FloatingLabel>
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group className="mb-2">
             <FloatingLabel
