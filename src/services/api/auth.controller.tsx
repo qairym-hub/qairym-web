@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import { UserRegistrationForm } from '../types'
 
+
 class AuthController {
     public getHeader(token: string): object {
         return {
@@ -26,11 +27,10 @@ class AuthController {
         }
     }
 
-    public async create(user: UserRegistrationForm, onSuccess: any, onError: any) {
+    public async create(user: any, onSuccess: any, onError: any) {
         try {
             const response = await axios.post(
-                `${process.env.REACT_APP_BASE_URL}/api/user/register`,
-                user
+                `https://qaihub.herokuapp.com/api/user/save`, user
             )
 
             return onSuccess(response.data)
