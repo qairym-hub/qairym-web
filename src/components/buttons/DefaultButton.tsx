@@ -32,6 +32,7 @@ const DefaultButton: React.FunctionComponent<ButtonComponentProps> = (
         variant={color}
         onClick={onClick}
         disabled={loading}
+        size="lg"
 
       >
         {

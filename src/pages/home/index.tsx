@@ -3,9 +3,17 @@ import {
     Container,
     Row,
     Col,
+    FloatingLabel,
+    Form,
+    FormGroup,
+    FormLabel,
+    Button,
 } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
+import FadeIn from "react-fade-in/lib/FadeIn";
+import { DefaultButton } from "../../components";
 import PostCard from "./components/post/PostCard";
+import SideBar from "./components/sidebar/SideBar";
 import UserCard from "./components/UserCard";
 
 const posts = [
@@ -54,84 +62,101 @@ const HomePage: React.FunctionComponent = () => {
     return (
         <>
             <div className="p-4">
-                {/* <div className="d-flex justify-content-center p-4">
-                    <UserCard 
-                        username="talgatulyzh"
-                    />
-                </div> */}
-                <Container style={{ position: "relative" }}>
-                <div className="d-flex justify-content-center">
-                    <div 
-                        style={{ position: "absolute", left: 0 }}
-                        className="p-3"
-                    >
-                        <div>
+                <Container style={{ position: "relative" }} fluid>
+                    <div className="d-flex justify-content-center">
+                        <div 
+                            style={{ position: "fixed", left: "18%" }}
+                            className="p-3"
+                        >
                             <div>
-                                <UserCard 
-                                    username="talgatulyzh"
-                                />
+                                <FadeIn transitionDuration={500}>
+                                    <UserCard 
+                                        username="talgatulyzh"
+                                    />
+                                </FadeIn>
+                            </div>
+
+                            <div className="mt-5">
+                                <FadeIn
+                                    delay={250} 
+                                    transitionDuration={500}
+                                >
+                                    <SideBar />
+                                </FadeIn>
                             </div>
                         </div>
 
-                        <div className="mt-4">
-                            <div className="border rounded-extra px-2 py-2">
-                                <div
-                                    style={{ cursor: "pointer" }} 
-                                    className="d-flex p-2 clickable rounded-extra"
-                                >
-                                    <div 
-                                        style={{ flex: "20%" }}
-                                        className="d-flex align-items-center justify-content-center"
+                        <div className="mt-3">
+                            <div>
+                                <Form.Group className="d-flex">
+                                    <Form.Control 
+                                        className="rounded-extra"
+                                        type="text"
+                                        placeholder="Найти"
+                                        size="lg"
+                                    />
+                                    <div className="px-1"></div>
+                                    <Button
+                                        style={{ aspectRatio: "1/1" }}
+                                        className="rounded-extra d-flex align-items-center"
                                     >
-                                        <Icon.PlusCircleFill 
-                                            size="20"
-                                        />
-                                    </div>
-                                    <div style={{ flex: "80%" }}>
-                                        <span>
-                                            Создать
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="my-1"></div>
-                                <div
-                                    style={{ cursor: "pointer" }} 
-                                    className="d-flex p-2 clickable rounded-extra"
-                                >
-                                    <div 
-                                        style={{ flex: "20%" }}
-                                        className="d-flex align-items-center justify-content-center"
+                                        <Icon.PlusCircleFill size="20" />
+                                    </Button>
+                                </Form.Group>
+                            </div>
+
+                            {/* <div className="px-3 py-2">
+                                <div className="d-flex justify-content-end">
+                                    <Button
+                                        style={{ aspectRatio: "1/1" }}
+                                        className="rounded-extra d-flex align-items-center"
                                     >
-                                        <Icon.InputCursorText 
-                                            size="20"
-                                        />
-                                    </div>
-                                    <div style={{ flex: "80%" }}>
-                                        <span>
-                                            Найти
-                                        </span>
-                                    </div>
+                                        <Icon.PlusCircleFill size="20" />
+                                    </Button>
                                 </div>
+                            </div> */}
+
+                            <div className="mt-5">
+                                <div className="my-3">
+                                    <span className="text-roboto-500 fs-4">
+                                        Лента объявлений
+                                    </span>
+                                </div>
+                                {posts.map((post, index) => {
+                                        return (
+                                            <div key={index} className="mb-3">
+                                                <FadeIn
+                                                    delay={100 + (index * 150)}
+                                                    transitionDuration={500}
+                                                >
+                                                    <PostCard
+                                                        user={post.user}
+                                                        title={post.title}
+                                                        text={post.text}
+                                                        links={post.links}
+                                                        date={post.date}
+                                                    />
+                                                </FadeIn>
+
+                                            </div>
+                                        )
+                                    }
+                                )}
+                            </div>
+
+                        </div>
+
+                        <div 
+                            style={{ position: "fixed", left: "65%" }}
+                            className="p-3"
+                        >
+                            <div className="border rounded-extra background-white p-3">
+                                <span className="text-muted">
+                                    /*<br /><span className="px-3">no content yet</span><br />*/
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        {posts.map((post) => {
-                                return (
-                                    <div className="p-3">
-                                        <PostCard
-                                            user={post.user}
-                                            title={post.title}
-                                            text={post.text}
-                                            links={post.links}
-                                            date={post.date}
-                                        />
-                                    </div>
-                                );
-                            }
-                        )}
-                    </div>
-                </div>
                 </Container>
             </div>
         </>

@@ -23,13 +23,13 @@ const SubHeadPost: React.FunctionComponent<SubHeadPostProps> = (
             <div className="p-4">
                     <div className="d-flex align-items-center">
                         <span
-                            style={{ fontSize: "15px" }}
+                            style={{ fontSize: "20px" }}
                             className="text-roboto-500"
                         >
                             {username}
                         </span>
                         <span
-                            style={{ fontSize: "10px" }}
+                            style={{ fontSize: "12px" }}
                             className="text-muted mx-1"
                         >
                             • {getRelativeDate(date)}
@@ -37,19 +37,19 @@ const SubHeadPost: React.FunctionComponent<SubHeadPostProps> = (
                     </div>
                     <div className="d-flex align-items-start">
                         <span
-                            style={{ fontSize: "10px" }}
+                            style={{ fontSize: "12px" }}
                             className="text-muted"
                         >
                             гум. помощь
                         </span>
                         <span
-                            style={{ fontSize: "10px" }}
+                            style={{ fontSize: "12px" }}
                             className="text-roboto-500 text-muted mx-1"
                         >
                             /
                         </span>
                         <span
-                            style={{ fontSize: "10px" }}
+                            style={{ fontSize: "12px" }}
                             className="text-muted"
                         >
                             сборы
