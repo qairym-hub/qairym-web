@@ -14,7 +14,7 @@ import FadeIn from "react-fade-in/lib/FadeIn";
 import { DefaultButton } from "../../components";
 import PostCard from "./components/post/PostCard";
 import SideBar from "./components/sidebar/SideBar";
-import UserCard from "./components/UserCard";
+import UserCard from "./components/usercard/UserCard";
 
 const posts = [
     {
@@ -65,7 +65,7 @@ const HomePage: React.FunctionComponent = () => {
                 <Container style={{ position: "relative" }} fluid>
                     <div className="d-flex justify-content-center">
                         <div 
-                            style={{ position: "fixed", left: "10%" }}
+                            style={{ position: "fixed", left: "18%" }}
                             className="p-3"
                         >
                             <div>
@@ -76,18 +76,18 @@ const HomePage: React.FunctionComponent = () => {
                                 </FadeIn>
                             </div>
 
-                            <div className="mt-5">
+                            {/* <div className="mt-5">
                                 <FadeIn
                                     delay={250} 
                                     transitionDuration={500}
                                 >
                                     <SideBar />
                                 </FadeIn>
-                            </div>
+                            </div> */}
                         </div>
 
-                        <div className="mt-3">
-                            <div>
+                        <div>
+                            {/* <div>
                                 <Form.Group className="d-flex">
                                     <Form.Control 
                                         className="rounded-extra"
@@ -103,7 +103,7 @@ const HomePage: React.FunctionComponent = () => {
                                         <Icon.PlusCircleFill size="20" />
                                     </Button>
                                 </Form.Group>
-                            </div>
+                            </div> */}
 
                             {/* <div className="px-3 py-2">
                                 <div className="d-flex justify-content-end">
@@ -116,7 +116,7 @@ const HomePage: React.FunctionComponent = () => {
                                 </div>
                             </div> */}
 
-                            <div className="mt-5">
+                            <div>
                                 <div className="my-3">
                                     <span className="text-roboto-500 fs-4">
                                         Лента объявлений
