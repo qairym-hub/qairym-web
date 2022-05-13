@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import {
     Container,
     Row,
@@ -59,6 +60,28 @@ const posts = [
 ];
 
 const HomePage: React.FunctionComponent = () => {
+    const [posts, setPosts] = useState<any[]>([])
+    const [user, setUser] = useState<any[]>([])
+
+    const fetchPosts = async () => {
+        const res = await axios.get(
+            `https://qairhub.herokuapp.com/api/post/find`
+        )
+
+        setPosts(res.data)
+    }
+
+    const fetchUser = async () => {
+        const res = await axios.get(
+            `https://qairhub.herokuapp.com/api/user/find/username/`
+        )
+
+    }
+
+    useEffect(() => {
+        fetchPosts()
+    }, [])
+
     return (
         <>
             <div className="p-4">
@@ -71,7 +94,7 @@ const HomePage: React.FunctionComponent = () => {
                             <div>
                                 <FadeIn transitionDuration={500}>
                                     <UserCard 
-                                        username="talgatulyzh"
+                                        username="atu"
                                     />
                                 </FadeIn>
                             </div>
@@ -130,11 +153,11 @@ const HomePage: React.FunctionComponent = () => {
                                                     transitionDuration={500}
                                                 >
                                                     <PostCard
-                                                        user={post.user}
+                                                        username={post.author.username}
                                                         title={post.title}
                                                         text={post.text}
-                                                        links={post.links}
-                                                        date={post.date}
+                                                        links={["t.me/chat", "instagram.com/charchat"]}
+                                                        date={post.createdAt}
                                                     />
                                                 </FadeIn>
 

@@ -27,7 +27,7 @@ const BodyPost: React.FunctionComponent<BodyPostProps> = (
                                 padding: "0"
                             }}
                         >
-                            {lorem_text}
+                            {text}
                         </p>
                         <div className="py-4">
                             {links.map(

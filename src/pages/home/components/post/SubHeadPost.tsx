@@ -16,7 +16,7 @@ const SubHeadPost: React.FunctionComponent<SubHeadPostProps> = (
     
     const getRelativeDate = (date: string) => {
         moment()
-        return moment(date, "DD.MM.YYYY").fromNow()
+        return moment(date, "YYYY-MM-DD").fromNow()
     }
     return (
         <>

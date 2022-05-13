@@ -21,8 +21,11 @@ const SignUp = () => {
         cityId: 3
       }
     }
-    auth.create(newUser, () => {console.log("Зареган")}, ()=>{})
-    router.push("/home")
+    auth.create(
+      newUser, 
+      () => {console.log("Зареган")}, 
+      ()=>{}
+    )
   }
 
   return (

@@ -29,7 +29,6 @@ const Login: React.FunctionComponent = (props: any) => {
     setError('')
     setPassword(e.target.value)
   }
-
   
   const handleClick = () => {
     setError('')
@@ -49,7 +48,6 @@ const Login: React.FunctionComponent = (props: any) => {
         }, 1000)
       }
     )
-    router.push('/home')
   }
 
   return (

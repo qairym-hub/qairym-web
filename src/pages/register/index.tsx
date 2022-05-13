@@ -16,15 +16,15 @@ const SignUpPage: React.FunctionComponent = () => {
               <GoogleButton/>
             </div>
             <div
-                    style={{ textAlign: "center", borderBottom: "1px solid lightgray", lineHeight: "0.1em", margin: "10px 0 10px" }}
-                    className="w-100 text-center mt-5 mb-5"
-                  >
-                      <span
-                        style={{ background:"#fff", padding: "0 10px", color: "black" }}
-                        className=""
-                      >
-                        или используйте эл. почту
-                      </span>
+              style={{ textAlign: "center", borderBottom: "1px solid lightgray", lineHeight: "0.1em", margin: "10px 0 10px" }}
+              className="w-100 text-center mt-5 mb-5"
+            >
+              <span
+                style={{ background:"#fff", padding: "0 10px", color: "black" }}
+                className=""
+              >
+                или используйте эл. почту
+              </span>
             </div>
             <div>
               <SignUp/>

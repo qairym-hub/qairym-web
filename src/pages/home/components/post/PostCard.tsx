@@ -12,7 +12,7 @@ const lorem_text =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  software like Aldus PageMaker including versions of Lorem Ipsum.";
 
 interface PostCardProps {
-    user: User;
+    username: string;
     title: string;
     text: string;
     links: string[];
@@ -22,7 +22,7 @@ interface PostCardProps {
 
 const PostCard: React.FunctionComponent<PostCardProps> = (
     {
-        user,
+        username,
         title,
         text,
         links,
@@ -45,7 +45,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = (
                     title={title}
                 />
                 <SubHeadPost 
-                    username={user.username} 
+                    username={username} 
                     date={date} 
                 />
                 <BodyPost

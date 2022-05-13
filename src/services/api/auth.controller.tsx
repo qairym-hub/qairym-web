@@ -15,7 +15,7 @@ class AuthController {
     public async login(username: String, password: String, callback: any) {
         try {
             const response = await axios.post(
-                `${process.env.REACT_APP_BASE_URL}/api/user/login?username=${username}&password=${password}`
+                `https://qaihub.herokuapp.com/login?username=${username}&password=${password}`
             )
 
             return callback(response.data, null)
