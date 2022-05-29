@@ -63,8 +63,20 @@ async create(user, onSuccess, onError) {
         }
     }
 
-    async loadByUsername(username, token) {
+    async loadByToken(token) {
+            const header = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            }
 
+            const response = await axios.get(
+                `${process.env.REACT_APP_BASE_URL}/api/user/profile`,
+                header
+            )
+
+            return response.data
     }
 }
 

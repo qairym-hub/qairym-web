@@ -1,11 +1,11 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import * as Icon from 'react-bootstrap-icons'
-import buttons from './ActionButtonsData'
+import { buttons } from './ActionButtonsData'
+import { connect } from 'react-redux'
 
 import styles from './UserCard.module.css'
 
-const ActionButtons = () => {
+const ActionButtons = (props) => {
   return (
     <>
         {/* <div className="d-flex justify-content-between">
@@ -36,6 +36,7 @@ const ActionButtons = () => {
                             key={index}
                             style={{ backgroundColor: "rgb(255, 255, 255, .25)", cursor: "pointer", width: "30%" }} 
                             className={`d-flex flex-column align-items-center rounded-extra text-white py-2 px-3 mt-3 ${styles.clickable} `}
+                            onClick={() => item.action(props)}
                         >
                             {item.icon}
                             <span 
@@ -53,4 +54,32 @@ const ActionButtons = () => {
   )
 }
 
-export default ActionButtons
+const mapState = (state) => {
+    return {
+      authenticated: state.authReducer.authenticated
+    }
+  }
+  
+  const mapDispatch = (dispatch) => {
+    return {
+      login: (auth) => {
+        console.debug(auth)
+        return dispatch({
+          type: 'SIGNIN_SUCCESS',
+          payload: {
+            auth
+          }
+        })
+      },
+      logout: () => {
+          return dispatch({
+              type: 'SIGNOUT_SUCCESS'
+          })
+      }
+    }
+  }
+  
+  export default connect(
+    mapState,
+    mapDispatch
+  )(ActionButtons)

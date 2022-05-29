@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import axios from 'axios'
 import {
     Container,
+    Spinner,
     Row,
     Col,
     FloatingLabel,
@@ -16,74 +18,49 @@ import { DefaultButton } from "../../components/buttons/DefaultButton";
 import PostCard from "./components/post/PostCard";
 import SideBar from "./components/sidebar/SideBar";
 import UserCard from "./components/usercard/UserCard";
+import { Redirect } from "react-router-dom";
+import authController from "../../services/api/auth.controller";
+import userController from "../../services/api/user.controller";
 
-const posts = [
-    {
-        user: {
-            username: "aitu_charity",
-            photo_url: "",
-            location: "Nur-Sultan",
-        },
-        title: "Сбор средств для ремонта детского дома",
-        text: "",
-        links: [
-            "t.me/charity_meeting",
-            "instagram.com/char_meet",
-        ],
-        date: "25.04.2022",
-    },
-    {
-        user: {
-            username: "astanaCharity",
-            photo_url: "",
-            location: "Nur-Sultan",
-        },
-        title: "Субботник на территории Expo",
-        text: "",
-        links: [
-            "t.me/astanachari",
-            "instagram.com/ast.charity",
-        ],
-        date: "01.05.2022",
-    },
-    {
-        user: {
-            username: "green_volunteers",
-            photo_url: "",
-            location: "Nur-Sultan",
-        },
-        title: "Поздравление и помощь ветеранам войны",
-        text: "",
-        links: ["t.me/greenvols"],
-        date: "09.05.2022",
-    },
-];
-
-const HomePage = () => {
+const HomePage = (props) => {
     const [posts, setPosts] = useState([])
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({ userId: Number, username: String, followers: Number, followings: Number })
+    const [postsLoading, setPostsLoading] = useState(false)
+    const [userLoading, setUserLoading] = useState(false)
 
     const fetchPosts = async () => {
+        setPostsLoading(true)
         const res = await axios.get(
             `https://qairhub.herokuapp.com/api/post/find`
         )
 
         setPosts(res.data)
+        setPostsLoading(false)
     }
 
     const fetchUser = async () => {
-        const res = await axios.get(
-            `https://qairhub.herokuapp.com/api/user/find/username/`
-        )
+        setUserLoading(true)
+        const user = await authController.loadByToken(props.token)
+        const followers = await userController.getFollowers(user.data.userId)
+        const followings = await userController.getFollowings(user.data.userId)
 
+        setUser({
+            userId: user.data.userId
+        })
+
+        setUserLoading(false)
     }
 
     useEffect(() => {
         fetchPosts()
+        fetchUser()
     }, [])
 
     return (
         <>
+            {!props.authenticated && (
+                <Redirect push to="/login" />
+            )}
             <div className="p-4">
                 <Container style={{ position: "relative" }} fluid>
                     <div className="d-flex justify-content-center">
@@ -94,7 +71,14 @@ const HomePage = () => {
                             <div>
                                 <FadeIn transitionDuration={500}>
                                     <UserCard 
-                                        username="username"
+                                        user={
+                                            {
+                                                username: "zhoma",
+                                                city: "Shymkent",
+                                                followers: 1,
+                                                followings: 27
+                                            }
+                                        }
                                     />
                                 </FadeIn>
                             </div>
@@ -140,30 +124,42 @@ const HomePage = () => {
                             </div> */}
 
                             <div>
-                                <div className="my-3">
-                                    <span className="text-roboto-500 fs-4">
-                                        Лента объявлений
-                                    </span>
-                                </div>
-                                {posts.map((post, index) => {
-                                        return (
-                                            <div key={index} className="mb-3">
-                                                <FadeIn
-                                                    delay={100 + (index * 150)}
-                                                    transitionDuration={500}
-                                                >
-                                                    <PostCard
-                                                        username={post.author.username}
-                                                        title={post.title}
-                                                        text={post.text}
-                                                        links={["t.me/chat", "instagram.com/charchat"]}
-                                                        date={post.createdAt}
-                                                    />
-                                                </FadeIn>
+                                {posts.length === 0 ? (
+                                    <div style={{ marginTop: "150px" }}>
+                                        <Spinner
+                                            className="mt-4"
+                                            animation="border"
+                                            role="status" 
+                                        />
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="my-3">
+                                            <span className="text-roboto-500 fs-4">
+                                                Лента объявлений
+                                            </span>
+                                        </div>
+                                        {posts.map((post, index) => {
+                                                return (
+                                                    <div key={index} className="mb-3">
+                                                        <FadeIn
+                                                            delay={100 + (index * 150)}
+                                                            transitionDuration={500}
+                                                        >
+                                                            <PostCard
+                                                                username={post.author.username}
+                                                                title={post.title}
+                                                                text={post.text}
+                                                                links={["t.me/chat", "instagram.com/charchat"]}
+                                                                date={post.createdAt}
+                                                            />
+                                                        </FadeIn>
 
-                                            </div>
-                                        )
-                                    }
+                                                    </div>
+                                                )
+                                            }
+                                        )}
+                                    </>
                                 )}
                             </div>
 
@@ -186,4 +182,28 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+const mapState = (state) => {
+    return {
+      authenticated: state.authReducer.authenticated,
+      token: state.authReducer.token.accessToken
+    }
+}
+  
+const mapDispatch = (dispatch) => {
+    return {
+      login: (auth) => {
+        console.debug(auth)
+        return dispatch({
+          type: 'SIGNIN_SUCCESS',
+          payload: {
+            auth
+          }
+        })
+      }
+    }
+  }
+  
+  export default connect(
+    mapState,
+    mapDispatch
+  )(HomePage)

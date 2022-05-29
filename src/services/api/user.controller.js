@@ -62,6 +62,25 @@ class UserController {
                 `${process.env.REACT_APP_BASE_URL}/api/user/find/followers/${userId}`,
                 header
             )
+            
+            return onSuccess(response.data, null)
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                return onError(null, error)
+            }
+
+            return console.error('CLIENT_ERR', error)   
+        }
+    }
+
+    async getFollowings(userId, token, onSuccess, onError) {
+        const header = authController.getHeader(token)
+
+        try {
+            const response = await axios.get(
+                `${process.env.REACT_APP_BASE_URL}/api/user/find/followers/${userId}`,
+                header
+            )
 
             return onSuccess(response.data, null)
         } catch (error) {
