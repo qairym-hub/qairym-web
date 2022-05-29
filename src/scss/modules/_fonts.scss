@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$roboto: Roboto, sans-serif;
+$montserrat: Montserrat, sans-serif;
+
+.font-roboto {
+    font-family: $roboto;
+}
+
+.font-montserrat {
+    font-family: $montserrat;
+}
+
+/*
+    Roboto weights
+*/
+.text-roboto-500 {
+    @extend .font-roboto;
+    font-weight: 500;
+}
+
+.text-roboto-700 {
+    @extend .font-roboto;
+    font-weight: 700;
+}
+
+.text-roboto-900 {
+    font-weight: 900;
+}
+
+/*
+    Montserrat weights
+*/
+.text-montserrat-500 {
+    @extend .font-montserrat;
+    font-weight: 500;
+}
+
+.text-montserrat-600 {
+    @extend .font-montserrat;
+    font-weight: 600;
+}
+
+.text-montserrat-700 {
+    @extend .font-montserrat;
+    font-weight: 700;
+}
+
+.text-montserrat-800 {
+    @extend .font-montserrat;
+    font-weight: 800;
+}
