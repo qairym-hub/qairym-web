@@ -12,18 +12,11 @@ class AuthController {
 
     async login(username, password, callback) {
         try {
-            const headers = {
-                'Access-Control-Allow-Origin': '*'
-            }
-            
             const response = await axios.post(
                 `https://qairhub.herokuapp.com/login`,
                 {
-                    username,
-                    password
-                },
-                {
-                    headers: headers
+                    username: username,
+                    password: password
                 }
             )
 

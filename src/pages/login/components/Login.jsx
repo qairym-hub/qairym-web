@@ -2,6 +2,8 @@ import { AxiosError } from 'axios'
 import React, { useState } from 'react'
 import { Form, FloatingLabel } from 'react-bootstrap'
 import * as Icon from 'react-bootstrap-icons'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import AlertMessage from '../../../components/alerts/AlertMessage'
 import DefaultButton from '../../../components/buttons/DefaultButton'
@@ -39,7 +41,8 @@ const Login = (props) => {
             return setLoading(false)
           }
 
-          
+          console.log(data)
+          props.login(data)
           return setLoading(false)
         }, 1000)
       }
@@ -48,6 +51,10 @@ const Login = (props) => {
 
   return (
     <>
+      {props.authenticated && (
+        <Redirect push to="/" />
+      )}
+
       <div
         style={{ width: "350px" }}
         className="border rounded-extra background-white p-4"
@@ -107,13 +114,14 @@ const Login = (props) => {
 
 const mapState = (state) => {
   return {
-    authenticated: state.authReducer.token.authenticated
+    authenticated: state.authReducer.authenticated
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
     login: (auth) => {
+      console.debug(auth)
       return dispatch({
         type: 'SIGNIN_SUCCESS',
         payload: {
@@ -124,4 +132,7 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default Login
+export default connect(
+  mapState,
+  mapDispatch
+)(Login)
