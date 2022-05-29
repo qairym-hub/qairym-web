@@ -1,71 +1,58 @@
-import { AxiosError } from 'axios'
-import React, { useState } from 'react'
-import { Form, FloatingLabel } from 'react-bootstrap'
-import * as Icon from 'react-bootstrap-icons'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { AxiosError } from "axios";
+import React, { useState } from "react";
+import { Form, FloatingLabel } from "react-bootstrap";
+import * as Icon from "react-bootstrap-icons";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-import AlertMessage from '../../../components/alerts/AlertMessage'
-import DefaultButton from '../../../components/buttons/DefaultButton'
-import userController from '../../../services/api/auth.controller.js'
+import AlertMessage from "../../../components/alerts/AlertMessage";
+import DefaultButton from "../../../components/buttons/DefaultButton";
+import userController from "../../../services/api/auth.controller.js";
 
 const Login = (props) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState(undefined)
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   const handleUsernameChange = (e) => {
-    setError('')
-    setUsername(e.target.value)
-  }
+    setError("");
+    setUsername(e.target.value);
+  };
 
   const handlePasswordChange = (e) => {
-    setError('')
-    setPassword(e.target.value)
-  }
-  
+    setError("");
+    setPassword(e.target.value);
+  };
+
   const handleClick = () => {
-    setError('')
-    setLoading(true)
+    setError("");
+    setLoading(true);
 
-    userController.login(
-      username, password,
-      (data, error) => {
-        setTimeout(() => {
-          if (error) {
-            //setError(error.message)
-            console.log(error.message)
-            
-            return setLoading(false)
-          }
-
-          console.log(data)
-          props.login(data)
-          return setLoading(false)
-        }, 1000)
-      }
-    )
-  }
+    userController.login(username, password, (data, error) => {
+      setTimeout(() => {
+        if (error) {
+          console.log(error.message);
+          return setLoading(false);
+        }
+        console.log(data);
+        props.login(data);
+        return setLoading(false);
+      }, 1000);
+    });
+  };
 
   return (
     <>
-      {props.authenticated && (
-        <Redirect push to="/" />
-      )}
+      {props.authenticated && <Redirect push to="/" />}
 
       <div
         style={{ width: "350px" }}
         className="border rounded-extra background-white p-4"
       >
         <Form>
-          {error && (
-            <AlertMessage
-              text={error}
-              variant="danger"
-            />
-          )}
+          {error && <AlertMessage text={error} variant="danger" />}
           <Form.Group className="mb-3">
             <FloatingLabel
               controlId="floatingInput"
@@ -109,30 +96,27 @@ const Login = (props) => {
         </div> */}
       </div>
     </>
-  )
-}
+  );
+};
 
 const mapState = (state) => {
   return {
-    authenticated: state.authReducer.authenticated
-  }
-}
+    authenticated: state.authReducer.authenticated,
+  };
+};
 
 const mapDispatch = (dispatch) => {
   return {
     login: (auth) => {
-      console.debug(auth)
+      console.debug(auth);
       return dispatch({
-        type: 'SIGNIN_SUCCESS',
+        type: "SIGNIN_SUCCESS",
         payload: {
-          auth
-        }
-      })
-    }
-  }
-}
+          auth,
+        },
+      });
+    },
+  };
+};
 
-export default connect(
-  mapState,
-  mapDispatch
-)(Login)
+export default connect(mapState, mapDispatch)(Login);
